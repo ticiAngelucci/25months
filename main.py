@@ -3,7 +3,7 @@ import time
 
 # Definir la fecha y hora especial
 fecha_especial = datetime.datetime(2024, 2, 29, 00, 00, 0) 
-
+print("Buenas Buenaaaasss! Bienvenido a la consola:) Me presento soy bipbipbip TiciTerminal brindando un mensaje!")
 while True:
     # Obtener la fecha y hora actual
     fecha_actual = datetime.datetime.now()
