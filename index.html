@@ -1,133 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>25 Meses</title>
-  <link
-    rel="stylesheet"
-    href="https://pyscript.net/releases/2024.1.1/core.css"
-  />
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: black;
-      color: white;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      flex-direction: column;
-    }
-
-    #contador {
-      font-size: 24px;
-      background-color: #333;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-      text-align: center;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      width: 400px;
-    }
-
-    .countdown-item {
-      margin: 0 10px;
-    }
-
-    .countdown-value {
-      font-size: 36px;
-      font-weight: bold;
-    }
-
-    .countdown-heading {
-      font-size: 14px;
-    }
-
-    /* Media query para pantallas de hasta 600px de ancho */
-    @media only screen and (max-width: 600px) {
-      #contador {
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>25 Meses</title>
+    <link
+      rel="stylesheet"
+      href="https://pyscript.net/releases/2024.1.1/core.css"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: black;
+        color: white;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
         flex-direction: column;
-        width: 90%; 
-        max-width: 300px;
+      }
+
+      #contador {
+        font-size: 24px;
+        background-color: #333;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        text-align: center;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 400px;
       }
 
       .countdown-item {
-        margin: 10px 0; 
+        margin: 0 10px;
       }
-    }
-  </style>
-  <script
-    type="module"
-    src="https://pyscript.net/releases/2024.1.1/core.js"
-  ></script>
-  <script>
-    function abrirSpotify() {
-      // URL del tema en Spotify
-      var spotifyURL = "https://open.spotify.com/intl-es/track/4IaKBihToIPbiDjNFqBgw4?si=b59e9177e42043ab"; 
 
-      // Abrir la URL en una nueva pestaña
-      window.open(spotifyURL);
-    }
+      .countdown-value {
+        font-size: 36px;
+        font-weight: bold;
+      }
 
-    // Definir la fecha especial
-    var fechaEspecial = new Date("2024-02-28T00:60:00");
-    var mensajeMostrado = false;
+      .countdown-heading {
+        font-size: 14px;
+      }
 
-    // Función para actualizar el contador
-    function actualizarContador() {
-      var ahora = new Date();
-      var diferencia = fechaEspecial - ahora;
-      if (diferencia > 0) {
-        var dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-        var horas = Math.floor(
-          (diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
-        var minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
-        var segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
-        document.getElementById("contador").innerHTML =
-          "<div class='countdown-item'>" +
-          "<span class='countdown-value'>" +
-          dias +
-          "</span>" +
-          "<span class='countdown-heading'>Días</span>" +
-          "</div>" +
-          "<div class='countdown-item'>" +
-          "<span class='countdown-value'>" +
-          horas +
-          "</span>" +
-          "<span class='countdown-heading'>Horas</span>" +
-          "</div>" +
-          "<div class='countdown-item'>" +
-          "<span class='countdown-value'>" +
-          minutos +
-          "</span>" +
-          "<span class='countdown-heading'>Minutos</span>" +
-          "</div>" +
-          "<div class='countdown-item'>" +
-          "<span class='countdown-value'>" +
-          segundos +
-          "</span>" +
-          "<span class='countdown-heading'>Segundos</span>" +
-          "</div>";
+      /* Media query para pantallas de hasta 600px de ancho */
+      @media only screen and (max-width: 600px) {
+        #contador {
+          flex-direction: column;
+          width: 90%;
+          max-width: 300px;
+        }
 
-        // Actualizar el título con el contador
-        var titulo = dias + " : " + horas + " : " + minutos + " : " + segundos + " restantes";
-        document.title = titulo;
-      } else if (!mensajeMostrado) {
-        // Cuando la fecha especial llega y el mensaje aún no se ha mostrado
-        document.getElementById("contador").innerHTML = "¡BOOOM! Abri Inspeccionar/Console:)";
-        var botonSpotify = document.createElement("button");
-        botonSpotify.innerHTML = "Nose...clickeame(? vos sabras)";
-        botonSpotify.onclick = abrirSpotify;
-        document.body.appendChild(botonSpotify);
-        console.log("Buenas! Hooooolaaaaaaa...bip bip bip soy Ti-Terminal,a sus servicios...un pajarito me dejo un mensaje para usted,se leera en la siguiente linea:")
-        console.log("¡Feliz 2 años y un mes! Te amo loquito mio<3 Lo demas ya esta dicho pero me llena mucho y me hace la mujer más feliz/afortunada del mundo que me acompañes...ya que al final del dia,me doy cuenta que no puedo ni ocultar un poquito lo q me haces palpitar el corazon.");
-        console.log(`
+        .countdown-item {
+          margin: 10px 0;
+        }
+      }
+
+      /* Estilos para el botón */
+      button {
+        margin-bottom: 20px;
+        background-color: green;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        background-color: darkgreen;
+      }
+    </style>
+    <script
+      type="module"
+      src="https://pyscript.net/releases/2024.1.1/core.js"
+    ></script>
+    <script>
+      function abrirSpotify() {
+        // URL del tema en Spotify
+        var spotifyURL =
+          "https://open.spotify.com/intl-es/track/74KqkyHbpneHF6JT8EwUOO?si=3d67c953284a4018";
+
+        // Abrir la URL en una nueva pestaña
+        window.open(spotifyURL);
+      }
+
+      // Definir la fecha especial
+      var fechaEspecial = new Date("2024-02-28T01:05:00");
+      var mensajeMostrado = false;
+
+      // Función para actualizar el contador
+      function actualizarContador() {
+        var ahora = new Date();
+        var diferencia = fechaEspecial - ahora;
+        if (diferencia > 0) {
+          var dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+          var horas = Math.floor(
+            (diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          var minutos = Math.floor(
+            (diferencia % (1000 * 60 * 60)) / (1000 * 60)
+          );
+          var segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+          document.getElementById("contador").innerHTML =
+            "<div class='countdown-item'>" +
+            "<span class='countdown-value'>" +
+            dias +
+            "</span>" +
+            "<span class='countdown-heading'>Días</span>" +
+            "</div>" +
+            "<div class='countdown-item'>" +
+            "<span class='countdown-value'>" +
+            horas +
+            "</span>" +
+            "<span class='countdown-heading'>Horas</span>" +
+            "</div>" +
+            "<div class='countdown-item'>" +
+            "<span class='countdown-value'>" +
+            minutos +
+            "</span>" +
+            "<span class='countdown-heading'>Minutos</span>" +
+            "</div>" +
+            "<div class='countdown-item'>" +
+            "<span class='countdown-value'>" +
+            segundos +
+            "</span>" +
+            "<span class='countdown-heading'>Segundos</span>" +
+            "</div>";
+
+          // Actualizar el título con el contador
+          var titulo =
+            dias +
+            " : " +
+            horas +
+            " : " +
+            minutos +
+            " : " +
+            segundos +
+            " restantes";
+          document.title = titulo;
+        } else if (!mensajeMostrado) {
+          // Cuando la fecha especial llega y el mensaje aún no se ha mostrado
+          document.getElementById("contador").innerHTML =
+            "¡BOOOM! Abri Inspeccionar/Console:)";
+          var botonSpotify = document.createElement("button");
+          botonSpotify.innerHTML = "Nose...clickeame(? vos sabras)";
+          botonSpotify.onclick = abrirSpotify;
+          botonSpotify.classList.add("boton-estilo"); 
+          document.body.appendChild(botonSpotify);
+          console.log(
+            "Buenas! Hooooolaaaaaaa...bip bip bip soy Ti-Terminal, a sus servicios... un pajarito me dejó un mensaje para usted, se leerá en la siguiente línea:"
+          );
+          console.log(
+            "¡Feliz 2 años y un mes! Te amo loquito mío <3 Lo demás ya está dicho, pero me llena mucho y me hace la mujer más feliz/afortunada del mundo que me acompañes... ya que al final del día, me doy cuenta de que no puedo ni ocultar un poquito lo que me haces palpitar el corazón."
+          );
+          console.log(`
           ⬜⬜⬜⬜⬜⬜⬛⬛⬛⬛⬛⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜
           ⬜⬜⬜⬜⬛⬛🟥🟥🟥🟥🟥⬛⬛⬜⬜⬜⬜⬜⬜⬜⬜
           ⬜⬜⬜⬛🟥🟥🟥🟥🟥🟥🟥🟥🟥⬛⬜⬜⬜⬜⬜⬜⬜
@@ -157,22 +190,23 @@
           ⬜⬛🟥⬛⬛🟥🟥🟥🟥🟦🟦🟦⬛⬜⬜⬜⬛🟦🟦🟥⬛
           ⬜⬛🟥⬛⬛🟥🟥🟥🟥🟦🟦🟦⬛⬜⬜⬜⬛🟦🟦🟥⬛
           ⬜⬛🟥⬛⬛🟥🟥🟥🟥🟦🟦🟦⬛⬜⬜⬜⬛🟦🟦🟥⬛
+          ⬜⬛🟥⬛⬛🟥🟥🟥🟥🟦🟦🟦⬛⬜⬜⬜⬛🟦🟦🟥⬛
           `);
-        mensajeMostrado = true;
+          mensajeMostrado = true;
+        }
       }
-    }
 
-    // Actualizar el contador cada segundo
-    setInterval(actualizarContador, 1000);
+      // Actualizar el contador cada segundo
+      setInterval(actualizarContador, 1000);
 
-    // Mostrar el contador al cargar la página
-    window.onload = actualizarContador;
-  </script>
-</head>
-<body>
-  <header>
-    <h1>Holis</h1>
-  </header>
-  <div id="contador"></div>
-</body>
+      // Mostrar el contador al cargar la página
+      window.onload = actualizarContador;
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1>Holis</h1>
+    </header>
+    <div id="contador"></div>
+  </body>
 </html>
